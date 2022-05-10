@@ -1,3 +1,4 @@
+// webpack项目打包用的，需要使用common.js规范
 module.exports = {
   devServer:{
     host:'localhost',
