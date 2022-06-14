@@ -6,6 +6,8 @@
 
 <script>
 
+import jsonp from "jsonp";
+
 export default {
   name: 'app',
   components: {},
@@ -15,25 +17,20 @@ export default {
     }
   },
   mounted() {
+    // 使用jsonp进行访问
+    jsonp("http://www.imooc.com/search/hotwords",(err,res1)=>{
+      let result=res1;
+      // eslint-disable-next-line no-console
+      console.log(result)
+    })
+
+
+
+
     if (this.$cookie.get('userId')) {
       this.getUser();
       this.getCartCount();
     }
-    // 使用的时候需要把main.js中的axios.defaults.baseURL注释掉 不适用代理
-    // public根目录的文件引用方式
-    this.axios.get('/mock/user/login.json').then((res) => {
-      // eslint-disable-next-line no-console
-      console.log(JSON.stringify(res))
-    })
-    // axios.defaults.baseURL = 'https://www.fastmock.site/mock/5e82029955a63066ee5a6bb30c1e01dd/api'; 关闭代理
-    this.axios.get('/test').then((res) => {
-      // eslint-disable-next-line no-console
-      console.log(JSON.stringify(res))
-    })
-    // mock.js不会发出请求
-    this.axios.get('/user/login').then((res) => {
-      this.res=res;
-    })
   },
   methods: {
     getUser() {
