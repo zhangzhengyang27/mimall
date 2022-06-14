@@ -5,28 +5,15 @@
 </template>
 
 <script>
-
-import jsonp from "jsonp";
-
 export default {
   name: 'app',
   components: {},
   data() {
     return {
-      res:{}
+      res: {}
     }
   },
   mounted() {
-    // 使用jsonp进行访问
-    jsonp("http://www.imooc.com/search/hotwords",(err,res1)=>{
-      let result=res1;
-      // eslint-disable-next-line no-console
-      console.log(result)
-    })
-
-
-
-
     if (this.$cookie.get('userId')) {
       this.getUser();
       this.getCartCount();
@@ -48,6 +35,7 @@ export default {
 </script>
 
 <style lang="scss">
+// 导入scss文件
 @import './assets/scss/reset.scss';
 @import './assets/scss/config.scss';
 @import './assets/scss/button.scss';

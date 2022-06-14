@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import router from './router'
-// import axios from 'axios'
 import axios from './axios'
 import VueAxios from 'vue-axios'
 import VueLazyLoad from 'vue-lazyload'
@@ -12,10 +11,10 @@ import App from './App.vue'
 
 
 // mock开关
-const mock = true;
-if (mock) {
-    require('./mock/api');
-}
+// const mock = true;
+// if (mock) {
+//     require('./mock/api');
+// }
 
 // 避免每个页面，都要引入axios,把axios挂载到vue上面去
 Vue.use(VueAxios, axios);
