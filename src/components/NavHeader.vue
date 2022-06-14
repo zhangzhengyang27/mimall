@@ -29,6 +29,7 @@
             <div class="children">
               <ul>
                 <li class="product" v-for="(item,index) in phoneList" :key="index">
+                  <!--  拼接地址  -->
                   <a v-bind:href="'/#/product/'+item.id" target="_blank">
                     <div class="pro-img">
                       <img v-lazy="item.mainImage" :alt="item.subtitle">
@@ -135,6 +136,7 @@ export default {
     }*/
     ...mapState(['username', 'cartCount'])
   },
+  // 过滤器
   filters: {
     currency(val) {
       if (!val) return '0.00';
