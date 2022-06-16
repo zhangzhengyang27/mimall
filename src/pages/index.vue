@@ -47,15 +47,17 @@
           <swiper-slide v-for="(item,index) in slideList" v-bind:key="index">
             <a v-bind:href="'/#/product/'+item.id"><img v-bind:src="item.img"></a>
           </swiper-slide>
-          <!-- Optional controls -->
+          <!-- Optional controls 轮播图插件的配置 -->
           <div class="swiper-pagination" slot="pagination"></div>
           <div class="swiper-button-prev" slot="button-prev"></div>
           <div class="swiper-button-next" slot="button-next"></div>
         </swiper>
       </div>
+      <!-- 广告位的位置 -->
       <div class="ads-box">
         <a v-bind:href="'/#/product/'+item.id" v-for="(item,index) in adsList" v-bind:key="index">
-          <img v-lazy="item.img" alt="">
+          <!--   <img v-lazy="item.img" :src="item.img" alt="">  -->
+          <img :src="item.img" alt="">
         </a>
       </div>
       <div class="banner">
@@ -72,6 +74,7 @@
             <a href="/#/product/35"><img v-lazy="'/imgs/mix-alpha.jpg'" alt=""></a>
           </div>
           <div class="list-box">
+            <!-- list是一行的数据 -->
             <div class="list" v-for="(arr,i) in phoneList" v-bind:key="i">
               <div class="item" v-for="(item,j) in arr" v-bind:key="j">
                 <span v-bind:class="{'new-pro':j%2==0}">新品</span>
@@ -95,9 +98,9 @@
         sureText="查看购物车"
         btnType="1"
         modalType="middle"
-        v-bind:showModal="showModal"
-        v-on:submit="goToCart"
-        v-on:cancel="showModal=false"
+        :showModal="showModal"
+        @submit="goToCart"
+        @cancel="showModal=false"
     >
       <template v-slot:body>
         <p>商品添加成功！</p>
@@ -339,8 +342,12 @@ export default {
     @include flex();
     margin-top: 14px;
     margin-bottom: 31px;
+    //width: 1226px;
+    //height:400px;
+    //display: inline-block!important;
 
     a {
+      display: inline-block;
       width: 296px;
       height: 167px;
     }
@@ -375,9 +382,10 @@ export default {
       }
 
       .list-box {
+        flex: 1;
+
         .list {
           @include flex();
-          width: 986px;
           margin-bottom: 14px;
 
           &:last-child {

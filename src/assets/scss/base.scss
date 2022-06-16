@@ -28,6 +28,7 @@ input {
   float: right;
 }
 
+// 清除伪类
 .clearfix:before, .clearfix:after {
   content: ' ';
   display: table;
